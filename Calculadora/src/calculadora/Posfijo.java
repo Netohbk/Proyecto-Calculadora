@@ -9,11 +9,15 @@ import pilas.PilaA;
 import pilas.PilaADT;
 
 /**
- *
+ * Definición de clase Postfijo que convierte expresión en postfija
  * @author m-gla
  */
 public class Posfijo {
-    
+    /**
+     * Método que regresa cadena de caracteres en postfija
+     * @param expresion
+     * @return String
+     */
     public String cadena(String expresion){
         String posfija = "";
         PilaADT <Character> pila = new PilaA();

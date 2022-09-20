@@ -11,6 +11,7 @@ import pilas.PilaADT;
  *
  * @author Ernesto Palma
  * * Definiciòn de la clase Evaluación de Postfija que usa pilas
+ * @param <T>
  */
 public class EvaluacionPostfija <T>{
     
@@ -34,7 +35,7 @@ public class EvaluacionPostfija <T>{
             System.out.println("Valor de i en inicio: "+i);
             if(this.operador(cadena.charAt(i))){
                 numer=pila.pop();
-                switch(cadena.charAt(i)){
+                switch(cadena.charAt(i)){ // es más fácil usar casos que condicional if
                     case'+': resul=pila.pop() + numer;
                             pila.push(resul);
                             break;

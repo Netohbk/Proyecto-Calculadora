@@ -1,2 +1,3 @@
 *.DS_Store* 
 /Calculadora/nbproject/private/
+/Calculadora/build/

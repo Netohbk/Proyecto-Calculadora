@@ -332,7 +332,16 @@ public class interfaceCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_puntobttonActionPerformed
 
     private void igualbttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualbttonActionPerformed
-
+        String texto,expresion,resul;
+        double resultado=0;
+        texto=this.expresiontxt.getText();
+        Posfijo pos = new Posfijo();
+        EvaluacionPostfija ev = new EvaluacionPostfija();
+        expresion=pos.cadena(texto);
+        resultado=ev.evaluaPost(expresion);
+        this.jTextPane2.setText(Double.toString(resultado));
+        
+        
     }//GEN-LAST:event_igualbttonActionPerformed
 
     private void porbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porbuttonActionPerformed
@@ -418,7 +427,7 @@ public class interfaceCalculadora extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
