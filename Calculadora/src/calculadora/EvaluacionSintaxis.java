@@ -93,7 +93,7 @@ public class EvaluacionSintaxis {
     public boolean esOperador(char c){
         boolean res= false;
         
-        if (c=='*' || c=='/' || c=='+' || c=='-'){
+        if (c=='*' || c=='/' || c=='+' || c=='-' || c=='^'){
             res= true;
         }
         return res;
