@@ -110,7 +110,7 @@ public class EvaluacionSintaxis {
     public boolean esOperadorSinMenos(char c){
         boolean res= false;
         
-        if (c=='*' || c=='/' || c=='+'){
+        if (c=='*' || c=='/' || c=='+' ||c=='^'){
             res= true;
         }
         return res;
