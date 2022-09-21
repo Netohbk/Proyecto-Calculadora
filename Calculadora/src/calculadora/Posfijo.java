@@ -4,7 +4,6 @@
  */
 package calculadora;
 
-import java.util.HashMap;
 import pilas.PilaA;
 import pilas.PilaADT;
 
@@ -13,20 +12,45 @@ import pilas.PilaADT;
  * @author m-gla
  */
 public class Posfijo {
+    
     /**
-     * Método que regresa cadena de caracteres en postfija
+     * Constructor por omisión 
+     */
+    public Posfijo(){
+    }
+    
+    /**
+     * Método para asignar el peso del los carácteres de los operadores.
+     * @param n
+     * @return 
+     */
+    public int pesoOp(Character n){
+        int valor = 0;
+        if(null != n)switch (n) {
+            case '+':
+            case '-':
+                valor = 1;
+                break;
+            case '*':
+            case '/':
+                valor = 2;
+                break;
+            case '^':
+                valor = 3;
+                break;
+            default:
+                break;
+        }
+        return valor;
+    }
+    /**
+     * Método que regresa cadena de caracteres en formato postfija
      * @param expresion
      * @return String
      */
     public String cadena(String expresion){
         String posfija = "";
         PilaADT <Character> pila = new PilaA();
-        HashMap <Character, Integer> operadores = new HashMap <>();
-        operadores.put('+',1);
-        operadores.put('-', 1);
-        operadores.put('*',2);
-        operadores.put('/', 2);
-        operadores.put('^', 3);
         
         int i = 0;
         Character c;
@@ -51,9 +75,9 @@ public class Posfijo {
                         posfija += pila.pop();
                     }
                     pila.pop();
-                }else if(pila.peek() == '(' || operadores.get(c) > operadores.get(pila.peek())){
+                }else if(pila.peek() == '(' || pesoOp(c) > pesoOp(pila.peek())){
                     pila.push(c);
-                }else if(operadores.get(c) <= operadores.get(pila.peek())){
+                }else if(pesoOp(c) <= pesoOp(pila.peek())){
                     posfija+= pila.pop();
                     pila.push(c);
                 }
@@ -67,4 +91,3 @@ public class Posfijo {
     }
        
 }
-
