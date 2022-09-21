@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
 /**
- *
+ *Clase para evaluar que una sintaxis matematica este bien escrita
  * @author jeronimo
  */
 public class EvaluacionSintaxis {
@@ -24,6 +19,7 @@ public class EvaluacionSintaxis {
         Character c;
         PilaA<Character> pila= new PilaA();
         int i=0;
+        
         while(i<formula.length() && res){
             c= formula.charAt(i);
             if(c=='('){
@@ -54,6 +50,7 @@ public class EvaluacionSintaxis {
      */
     public static boolean esOperador(char c){
         boolean res= false;
+        
         if (c=='*' || c=='/' || c=='+' || c=='-'){
             res= true;
         }
@@ -72,8 +69,9 @@ public class EvaluacionSintaxis {
         boolean res= true;
         Character c;
         Character c2;
-        //nunca debe llegar a .length ya que checamos dos valores uno mayor al contador
+        //nunca debe llegar a formula.length ya que checamos dos valores, uno mayor al contador
         int i=0;
+        
         while(i<formula.length()-1 && res){
             c= formula.charAt(i);
             c2= formula.charAt(i+1);
@@ -98,6 +96,7 @@ public class EvaluacionSintaxis {
         Character c;
         PilaA<Character> pila= new PilaA();
         int i=0;
+        
         while(i<formula.length() && res){
             c= formula.charAt(i);
             if(c=='.'){
@@ -130,8 +129,9 @@ public class EvaluacionSintaxis {
         boolean res= true;
         Character c;
         Character c2;
-        //empezamos en 1 ya que queremos revisar el del contador y el anteriro
+        //empezamos en 1 ya que queremos revisar el del contador y el anterior
         int i=1;
+        
         while(i<formula.length() && res){
             c= formula.charAt(i);
             c2= formula.charAt(i-1);
@@ -153,6 +153,7 @@ public class EvaluacionSintaxis {
      */
     public static boolean expresionValida(String formula){
         boolean res= false;
+        
         if(parentesisBalanceados(formula)&&noDobleOperador(formula)&&noDobleDecimal(formula)&&noOperadorAntesDeParentesis(formula)){
             res=true;
         }
