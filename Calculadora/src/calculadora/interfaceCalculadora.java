@@ -337,11 +337,15 @@ public class interfaceCalculadora extends javax.swing.JFrame {
         texto=this.expresiontxt.getText();
         Posfijo pos = new Posfijo();
         EvaluacionPostfija ev = new EvaluacionPostfija();
-        expresion=pos.cadena(texto);
-        resultado=ev.evaluaPost(expresion);
-        this.jTextPane2.setText(Double.toString(resultado));
-        
-        
+        EvaluacionSintaxis s= new EvaluacionSintaxis();
+        if(!s.expresionValida(texto)){
+            this.jTextPane2.setText("Error de sintaxis");
+        }
+        else{
+            expresion=pos.cadena(texto);
+            resultado=ev.evaluaPost(expresion);
+            this.jTextPane2.setText(Double.toString(resultado));
+        }  
     }//GEN-LAST:event_igualbttonActionPerformed
 
     private void porbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porbuttonActionPerformed

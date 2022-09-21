@@ -1,5 +1,7 @@
 package calculadora;
 
+import pilas.PilaA;
+
 /**
  *Clase para evaluar que una sintaxis matematica este bien escrita
  * @author jeronimo
@@ -14,7 +16,7 @@ public class EvaluacionSintaxis {
      * <li>false: si los parentesis no estan balanceados
      * </ul>
      */
-    public static boolean parentesisBalanceados(String formula){
+    public boolean parentesisBalanceados(String formula){
         boolean res=true;
         Character c;
         PilaA<Character> pila= new PilaA();
@@ -48,7 +50,7 @@ public class EvaluacionSintaxis {
      *<li>false: si el character no es '+','/','-','*';
      *</ul>
      */
-    public static boolean esOperador(char c){
+    public boolean esOperador(char c){
         boolean res= false;
         
         if (c=='*' || c=='/' || c=='+' || c=='-'){
@@ -65,7 +67,7 @@ public class EvaluacionSintaxis {
      * <li>flase: si hay dos operados juntos en la expresion
      * </ul>
      */
-    public static boolean noDobleOperador(String formula){
+    public boolean noDobleOperador(String formula){
         boolean res= true;
         Character c;
         Character c2;
@@ -91,7 +93,7 @@ public class EvaluacionSintaxis {
      * <li>flase: si hay doble decimal
      * </ul>
      */
-    public static boolean noDobleDecimal(String formula){
+    public boolean noDobleDecimal(String formula){
         boolean res= true;
         Character c;
         PilaA<Character> pila= new PilaA();
@@ -125,7 +127,7 @@ public class EvaluacionSintaxis {
      * <li>flase: si hay parentesis sin operador
      * </ul>
      */
-    public static boolean noOperadorAntesDeParentesis(String formula){
+    public boolean noOperadorAntesDeParentesis(String formula){
         boolean res= true;
         Character c;
         Character c2;
@@ -151,7 +153,7 @@ public class EvaluacionSintaxis {
      * <li>flase: si no esta bien escrita
      * </ul>
      */
-    public static boolean expresionValida(String formula){
+    public boolean expresionValida(String formula){
         boolean res= false;
         
         if(parentesisBalanceados(formula)&&noDobleOperador(formula)&&noDobleDecimal(formula)&&noOperadorAntesDeParentesis(formula)){
