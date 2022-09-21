@@ -8,6 +8,29 @@ import pilas.PilaA;
  */
 public class EvaluacionSintaxis {
     /**
+     * Determina si la expresion tiene caracteres que no sean numeros, operadores, puntos o parentesis
+     * 
+     * @param formula String de la expresion que queremos evaluar
+     * @return <ul>
+     * <li>true: si la expresion no tiene caracteres no aceptados
+     * <li>false: si la expresion solamente tiene caracteres aceptados
+     * </ul>
+     */
+    public boolean noCaracteresNoAceptados(String formula){
+        boolean res= true;
+        int i=0;
+        Character c;
+        
+        while(i<formula.length() && res){
+            c= formula.charAt(i);
+            if(!esNumero(c)&&!esOperador(c)&& c!='(' && c!=')' && c!='.'){
+                res=false;
+            }
+            i++;
+        }
+        return res;
+    }
+    /**
      * Determina si una expresion matematica tiene los parametros balanceados
      * 
      * @param formula String de la expresion que queremos evaluar
@@ -42,6 +65,23 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
+     * Metodo que nos permite determinar si un caracter es un numero
+     * 
+     * @param c el caracter que queremos evaluar
+     * @return <ul>
+     *<li>true: si el character es un numero
+     *<li>false: si el character no es un numero
+     *</ul>
+     */
+     public boolean esNumero(char c){
+        boolean res= false;
+        
+        if (c=='1' || c=='2' || c=='3' || c=='4'|| c=='5' || c=='6' || c=='7' || c=='8' || c=='9' || c=='0'){
+            res= true;
+        }
+        return res;
+    }
+    /**
      * Metodo que nos permite determinar si un character es un operador ('+','/','-','*')
      * 
      * @param c el caracter que queremos evaluar
@@ -54,6 +94,23 @@ public class EvaluacionSintaxis {
         boolean res= false;
         
         if (c=='*' || c=='/' || c=='+' || c=='-'){
+            res= true;
+        }
+        return res;
+    }
+    /**
+     * Metodo que nos permite determinar si un character es un operador sin incluir al menos ('+','/','*')
+     * 
+     * @param c el caracter que queremos evaluar
+     * @return <ul>
+     *<li>true: si el character es '+','/','*';
+     *<li>false: si el character no es '+','/','*';
+     *</ul>
+     */
+    public boolean esOperadorSinMenos(char c){
+        boolean res= false;
+        
+        if (c=='*' || c=='/' || c=='+'){
             res= true;
         }
         return res;
@@ -77,7 +134,7 @@ public class EvaluacionSintaxis {
         while(i<formula.length()-1 && res){
             c= formula.charAt(i);
             c2= formula.charAt(i+1);
-            if(esOperador(c) && esOperador(c2)){
+            if(esOperadorSinMenos(c) && esOperadorSinMenos(c2)){
                 res= false;
             }
             i++;
@@ -156,7 +213,7 @@ public class EvaluacionSintaxis {
     public boolean expresionValida(String formula){
         boolean res= false;
         
-        if(parentesisBalanceados(formula)&&noDobleOperador(formula)&&noDobleDecimal(formula)&&noOperadorAntesDeParentesis(formula)){
+        if(parentesisBalanceados(formula)&&noDobleOperador(formula)&&noDobleDecimal(formula)&&noOperadorAntesDeParentesis(formula) &&noCaracteresNoAceptados(formula)){
             res=true;
         }
         return res;
