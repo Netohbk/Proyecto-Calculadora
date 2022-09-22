@@ -342,8 +342,13 @@ public class interfaceCalculadora extends javax.swing.JFrame {
         }
         else{
             expresion=pos.cadena(texto);
-            resultado=ev.evaluaPost(expresion);
-            this.jTextPane2.setText(Double.toString(resultado));
+            try{
+                resultado=ev.evaluaPost(expresion);
+                this.jTextPane2.setText(Double.toString(resultado));
+            }catch(Exception e){
+                this.jTextPane2.setText("Error");
+            }
+            
         }  
     }//GEN-LAST:event_igualbttonActionPerformed
 

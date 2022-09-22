@@ -44,11 +44,21 @@ public class EvaluacionPostfija <T>{
                     case'*': resul=pila.pop() * numer; // multiplicación
                             pila.push(resul);
                             break;
-                    case'/': resul=pila.pop() / numer; // división
-                            pila.push(resul);
+                    case'/': if(numer == 0){
+                                    throw new RuntimeException("no se puede dividir entre cero");
+                                }
+                            else{
+                                resul=pila.pop() / numer; // división
+                                pila.push(resul);
+                            }
                             break;
-                    case'^': resul=Math.pow(pila.pop(), numer); // potencia
+                    case'^': if(numer == 0 && pila.peek()==0){
+                        throw new RuntimeException("no se puede hacer la operación ");
+                    }
+                    else{
+                        resul=Math.pow(pila.pop(), numer); // potencia
                             pila.push(resul);
+                    }
                             break;
                 }
             }

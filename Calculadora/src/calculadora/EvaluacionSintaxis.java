@@ -7,6 +7,13 @@ import pilas.PilaA;
  * @author jeronimo
  */
 public class EvaluacionSintaxis {
+    
+    /**
+     * Constructor por omisión
+     */
+    public EvaluacionSintaxis(){
+        
+    }
     /**
      * Determina si la expresion tiene caracteres que no sean números, operadores, puntos o paréntesis
      * 

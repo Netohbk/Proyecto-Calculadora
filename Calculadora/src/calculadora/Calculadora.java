@@ -31,9 +31,10 @@ public class Calculadora {
         String texto2="((6*34.45^4)+(89/7*5)/85^2)/895452"; // caso límite
         String texto3="((6^4)-(89/7*5)";
         String texto4="((6*3^4)-(89/7*5)/85^2)/895452";
-        String texto="9-6-(9*8+9/8^2)";
+        String texto5="9-6-(9*8+9/8^2)";
+        String texto="7/-8";
         if(ever.expresionValida(texto)){
-            System.out.println(ever.expresionValida(texto2));
+            System.out.println(ever.expresionValida(texto));
             System.out.println(pos.cadena(texto));
             System.out.println(ev.evaluaPost(pos.cadena(texto)));
         }

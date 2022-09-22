@@ -26,7 +26,7 @@ public class Posfijo {
      */
     public int pesoOp(Character n){
         int valor = 0;
-        if(null != n)switch (n) {
+        if(null != n)switch (n) { 
             case '+':
             case '-':
                 valor = 1;
