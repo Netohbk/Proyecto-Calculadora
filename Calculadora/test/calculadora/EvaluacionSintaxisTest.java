@@ -42,13 +42,16 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoCaracteresNoAceptados() {
         System.out.println("noCaracteresNoAceptados");
-        String formula = "";
+        String formula1 = "(16)+5*8^2-4/7";
+        String formula2 = "18-8+m+6/4";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.noCaracteresNoAceptados(formula);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.noCaracteresNoAceptados(formula1);
+        boolean result2 = instance.noCaracteresNoAceptados(formula2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
+        
     }
 
     /**
@@ -57,13 +60,16 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testParentesisBalanceados() {
         System.out.println("parentesisBalanceados");
-        String formula = "";
+        String formula1 = "(4+(5*3(4/2)^2))";
+        String formula2 = "(4+(5*3(4/2)^2))";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.parentesisBalanceados(formula);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.parentesisBalanceados(formula1);
+        boolean result2 = instance.parentesisBalanceados(formula2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
+       
     }
 
     /**
@@ -72,11 +78,15 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsNumero() {
         System.out.println("esNumero");
-        char c = ' ';
+        char c1 = '5';
+        char c2 = '-';
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.esNumero(c);
-        assertEquals(expResult, result);
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.esNumero(c1);
+        boolean result2 = instance.esNumero(c2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -87,13 +97,16 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsOperador() {
         System.out.println("esOperador");
-        char c = ' ';
+        char c1 = '/';
+        char c2 = '9';
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.esOperador(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult1 = true;
+        boolean expResult2= false;
+        boolean result1 = instance.esOperador(c1);
+        boolean result2 = instance.esOperador(c2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
+        
     }
 
     /**
@@ -102,13 +115,16 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsOperadorSinMenos() {
         System.out.println("esOperadorSinMenos");
-        char c = ' ';
+        char c1 = '/';
+        char c2 = '-';
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.esOperadorSinMenos(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.esOperadorSinMenos(c1);
+        boolean result2 = instance.esOperadorSinMenos(c2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
+        
     }
 
     /**
@@ -122,8 +138,7 @@ public class EvaluacionSintaxisTest {
         boolean expResult = false;
         boolean result = instance.noDobleOperador(formula);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -137,8 +152,7 @@ public class EvaluacionSintaxisTest {
         boolean expResult = false;
         boolean result = instance.noDobleDecimal(formula);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -157,9 +171,7 @@ public class EvaluacionSintaxisTest {
         boolean result3 = instance.noOperadorAntesDeParentesis(formula);
         assertEquals(expResult, result);
         assertEquals(expResult2, result2);
-        
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
     }
 
     /**
@@ -173,8 +185,7 @@ public class EvaluacionSintaxisTest {
         boolean expResult = false;
         boolean result = instance.expresionValida(formula);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
