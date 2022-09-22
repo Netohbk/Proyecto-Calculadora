@@ -32,41 +32,37 @@ public class EvaluacionPostfija <T>{
         int i=0;
         double resul, numer;
         while(i<cadena.length()){
-            System.out.println("Valor de i en inicio: "+i);
             if(this.operador(cadena.charAt(i))){
-                numer=pila.pop();
-                switch(cadena.charAt(i)){ // es más fácil usar casos que condicional if
-                    case'+': resul=pila.pop() + numer;
+                numer=pila.pop(); // no pedimos condiciones, pues se garantiza postfija bien escrita la cual empieza con un número al menos
+                switch(cadena.charAt(i)){ // es más fácil usar casos que condicional if por ser varios
+                    case'+': resul=pila.pop() + numer; // cada caso es una operación, aquí es una suma 
                             pila.push(resul);
                             break;
-                    case'-': resul=pila.pop() - numer;
+                    case'-': resul=pila.pop() - numer; // resta
                             pila.push(resul);
                             break;
-                    case'*': resul=pila.pop() * numer;
+                    case'*': resul=pila.pop() * numer; // multiplicación
                             pila.push(resul);
                             break;
-                    case'/': resul=pila.pop() / numer;
+                    case'/': resul=pila.pop() / numer; // división
                             pila.push(resul);
                             break;
-                    case'^': resul=Math.pow(pila.pop(), numer);
+                    case'^': resul=Math.pow(pila.pop(), numer); // potencia
                             pila.push(resul);
                             break;
                 }
             }
-            else if(this.parentesis(cadena.charAt(i))){
+            else if(this.parentesis(cadena.charAt(i))){ // identifica el paréntesis inicial
                 StringBuilder sb=new StringBuilder();
                 int cont=0;
-                while(!this.parentesis(cadena.charAt(i+1))){
+                while(!this.parentesis(cadena.charAt(i+1))){  // Agrupa lo que está dentro de los paréntesis como un número   
                     sb.append(cadena.charAt(i+1));
                     i++;
                     cont++;
                 }
-                pila.push(Double.parseDouble(sb.toString()));
+                pila.push(Double.parseDouble(sb.toString())); // agrega el número a la pila
                 i++;
-                System.out.println("valor de i"+i);
-            }    
-            else
-                pila.push(Double.parseDouble(cadena.substring(i, i+1)));  
+            }  
             i++;
         }
         return pila.peek();
@@ -87,7 +83,7 @@ public class EvaluacionPostfija <T>{
     /**
      * Método que indica si un caracter de una cadena de texto es un paréntesis
      * @param cadena
-     * @return 
+     * @return boolean
      */
     public boolean parentesis(char cadena){
         boolean resp=false;

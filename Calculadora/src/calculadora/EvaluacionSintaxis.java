@@ -8,12 +8,12 @@ import pilas.PilaA;
  */
 public class EvaluacionSintaxis {
     /**
-     * Determina si la expresion tiene caracteres que no sean numeros, operadores, puntos o parentesis
+     * Determina si la expresion tiene caracteres que no sean números, operadores, puntos o paréntesis
      * 
-     * @param formula String de la expresion que queremos evaluar
+     * @param formula String de la expresión que queremos evaluar
      * @return <ul>
-     * <li>true: si la expresion no tiene caracteres no aceptados
-     * <li>false: si la expresion solamente tiene caracteres aceptados
+     * <li>true: si la expresión no tiene caracteres no aceptados
+     * <li>false: si la expresion contiene caracteres no aceptados
      * </ul>
      */
     public boolean noCaracteresNoAceptados(String formula){
@@ -31,12 +31,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Determina si una expresion matematica tiene los parametros balanceados
+     * Determina si una expresión matemática tiene los parámetros balanceados
      * 
-     * @param formula String de la expresion que queremos evaluar
+     * @param formula String de la expresión que queremos evaluar
      * @return <ul>
-     * <li>true: si los parentesis estan balanceados
-     * <li>false: si los parentesis no estan balanceados
+     * <li>true: si los paréntesis estan balanceados
+     * <li>false: si los paréntesis no estan balanceados
      * </ul>
      */
     public boolean parentesisBalanceados(String formula){
@@ -50,27 +50,26 @@ public class EvaluacionSintaxis {
             if(c=='('){
                 pila.push(c);
             }
-            else{
-                if(c==')'){
-                    if(pila.isEmpty()){
-                        res=false;
-                    }
-                    else{
-                        pila.pop();
-                    }
+            else if(c==')'){
+                if(pila.isEmpty()){
+                    res=false;
                 }
+                else{
+                    pila.pop();
+                }
+                
             }
             i++;
         }
-        return res;
+        return res && pila.isEmpty();
     }
     /**
-     * Metodo que nos permite determinar si un caracter es un numero
+     * Método que nos permite determinar si un caracter es un número
      * 
      * @param c el caracter que queremos evaluar
      * @return <ul>
-     *<li>true: si el character es un numero
-     *<li>false: si el character no es un numero
+     *<li>true: si el character es un número
+     *<li>false: si el character no es un número
      *</ul>
      */
      public boolean esNumero(char c){
@@ -82,12 +81,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo que nos permite determinar si un character es un operador ('+','/','-','*')
+     * Método que nos permite determinar si un character es un operador ('+','/','-','*','^')
      * 
      * @param c el caracter que queremos evaluar
      * @return <ul>
-     *<li>true: si el character es '+','/','-','*';
-     *<li>false: si el character no es '+','/','-','*';
+     *<li>true: si el character es '+','/','-','*','^';
+     *<li>false: si el character no es '+','/','-','*','^';
      *</ul>
      */
     public boolean esOperador(char c){
@@ -99,12 +98,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo que nos permite determinar si un character es un operador sin incluir al menos ('+','/','*')
+     * Método que nos permite determinar si un character es un operador sin incluir al menos ('+','/','*','^')
      * 
      * @param c el caracter que queremos evaluar
      * @return <ul>
-     *<li>true: si el character es '+','/','*';
-     *<li>false: si el character no es '+','/','*';
+     *<li>true: si el character es '+','/','*','^';
+     *<li>false: si el character no es '+','/','*','^';
      *</ul>
      */
     public boolean esOperadorSinMenos(char c){
@@ -116,12 +115,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo para revisar que no existan dos operados juntos en una expresion
+     * Método para revisar que no existan dos operados juntos en una expresión
      * 
-     * @param formula String que representa la expresion que queremos evaluar 
+     * @param formula String que representa la expresión que queremos evaluar 
      * @return <ul>
-     * <li>true: si no hay dos operadores juntos en la expresion
-     * <li>flase: si hay dos operados juntos en la expresion
+     * <li>true: si no hay dos operadores juntos en la expresión
+     * <li>false: si hay dos operados juntos en la expresión
      * </ul>
      */
     public boolean noDobleOperador(String formula){
@@ -142,12 +141,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo para revisar que no existan dobles decimales
+     * Método para revisar que no existan dobles decimales
      * 
-     * @param formula String que representa la expresion que queremos evaluar 
+     * @param formula String que representa la expresión que queremos evaluar 
      * @return <ul>
      * <li>true: si no hay doble decimal
-     * <li>flase: si hay doble decimal
+     * <li>false: si hay doble decimal
      * </ul>
      */
     public boolean noDobleDecimal(String formula){
@@ -176,12 +175,12 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo para revisar que no existan parentesis sin operador
+     * Método para revisar que no existan paréntesis sin operador
      * 
-     * @param formula String que representa la expresion que queremos evaluar 
+     * @param formula String que representa la expresión que queremos evaluar 
      * @return <ul>
-     * <li>true: si no hay parentesis sin operador
-     * <li>flase: si hay parentesis sin operador
+     * <li>true: si no hay paréntesis sin operador
+     * <li>false: si hay paréntesis sin operador
      * </ul>
      */
     public boolean noOperadorAntesDeParentesis(String formula){
@@ -194,7 +193,7 @@ public class EvaluacionSintaxis {
         while(i<formula.length() && res){
             c= formula.charAt(i);
             c2= formula.charAt(i-1);
-            if(c=='(' && !esOperador(c2)){
+            if(c=='(' && !esOperador(c2) && c2!='('){
                 res= false;
             }
             i++;
@@ -202,18 +201,18 @@ public class EvaluacionSintaxis {
         return res;
     }
     /**
-     * Metodo para evaluar que la expresion este bien escrita 
+     * Método para evaluar que la expresión este bien escrita 
      * 
-     * @param formula String que representa la expresion que queremos evaluar 
+     * @param formula String que representa la expresión que queremos evaluar 
      * @return <ul>
      * <li>true: si esta bien escrita
-     * <li>flase: si no esta bien escrita
+     * <li>false: si no esta bien escrita
      * </ul>
      */
     public boolean expresionValida(String formula){
         boolean res= false;
         
-        if(parentesisBalanceados(formula)&&noDobleOperador(formula)&&noDobleDecimal(formula)&&noOperadorAntesDeParentesis(formula) &&noCaracteresNoAceptados(formula)){
+        if(parentesisBalanceados(formula) && noDobleOperador(formula) && noDobleDecimal(formula) && noOperadorAntesDeParentesis(formula) && noCaracteresNoAceptados(formula)){
             res=true;
         }
         return res;
