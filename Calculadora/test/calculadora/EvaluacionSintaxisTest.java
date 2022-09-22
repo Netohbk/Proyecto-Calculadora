@@ -133,11 +133,15 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoDobleOperador() {
         System.out.println("noDobleOperador");
-        String formula = "";
+        String formula1 = "4+8/6*24";
+        String formula2 = "166/19*/7";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.noDobleOperador(formula);
-        assertEquals(expResult, result);
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.noDobleOperador(formula1);
+        boolean result2 = instance.noDobleOperador(formula2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
         
     }
 
@@ -147,12 +151,15 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoDobleDecimal() {
         System.out.println("noDobleDecimal");
-        String formula = "";
+        String formula1 = "47.57+23.86";
+        String formula2 = "96.46/3.3.3";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.noDobleDecimal(formula);
-        assertEquals(expResult, result);
-        
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.noDobleDecimal(formula1);
+        boolean result2 = instance.noDobleDecimal(formula2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
     }
 
     /**
@@ -163,13 +170,11 @@ public class EvaluacionSintaxisTest {
         System.out.println("noOperadorAntesDeParentesis");
         String formula = "";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
+        boolean expResult1 = false;
         boolean expResult2 = false; 
-        boolean expResult3 = false;
-        boolean result = instance.noOperadorAntesDeParentesis(formula);
+        boolean result1 = instance.noOperadorAntesDeParentesis(formula);
         boolean result2 = instance.noOperadorAntesDeParentesis(formula);
-        boolean result3 = instance.noOperadorAntesDeParentesis(formula);
-        assertEquals(expResult, result);
+        assertEquals(expResult1, result1);
         assertEquals(expResult2, result2);
       
     }
@@ -180,11 +185,15 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testExpresionValida() {
         System.out.println("expresionValida");
-        String formula = "";
+        String formula1 = "85*66-(47*85)+(48/24)^4+43";
+        String formula2 = "85*66..64-(47*85)++((48m/24)";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
-        boolean expResult = false;
-        boolean result = instance.expresionValida(formula);
-        assertEquals(expResult, result);
+        boolean expResult1 = true;
+        boolean expResult2 = false;
+        boolean result1 = instance.expresionValida(formula1);
+        boolean result2 = instance.expresionValida(formula2);
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
         
     }
     
