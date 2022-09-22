@@ -58,6 +58,7 @@ public class PosfijoTest {
     public void testCadena() {
         System.out.println("cadena");
         String expresion = "4+5";
+        String expresion2 = "4+5+6";
         Posfijo instance = new Posfijo();
         String expResult = "(4)(5)+";//Es un caso sencillo
         String result = instance.cadena(expresion);
