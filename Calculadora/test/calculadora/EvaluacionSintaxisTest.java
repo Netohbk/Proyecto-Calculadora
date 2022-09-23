@@ -42,8 +42,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoCaracteresNoAceptados() {
         System.out.println("noCaracteresNoAceptados");
-        String formula1 = "(16)+5*8^2-4/7";
-        String formula2 = "18-8+m+6/4";
+        String formula1 = "(16)+5*8^2-4/7";//Expresión únicamente con caracteres aceptados
+        String formula2 = "18-8+m+6/4";//Agrego una letra para que marque false
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -60,8 +60,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testParentesisBalanceados() {
         System.out.println("parentesisBalanceados");
-        String formula1 = "(4+(5*3(4/2)^2))";
-        String formula2 = "(4+(5*3(4/2)^2))";
+        String formula1 = "(4+(5*3(4/2)^2))";//Expresión con parentesis bien
+        String formula2 = ")4+(5*3(4/2)^2))";//Expresión con un parentesis erroneo
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -78,8 +78,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsNumero() {
         System.out.println("esNumero");
-        char c1 = '5';
-        char c2 = '-';
+        char c1 = '5';//Prueba con un numero
+        char c2 = '-';//Proeba con un operador
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -87,8 +87,7 @@ public class EvaluacionSintaxisTest {
         boolean result2 = instance.esNumero(c2);
         assertEquals(expResult1, result1);
         assertEquals(expResult2, result2);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -97,8 +96,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsOperador() {
         System.out.println("esOperador");
-        char c1 = '/';
-        char c2 = '9';
+        char c1 = '/';//Prueba con un operador
+        char c2 = '9';//Prueba con un numero
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2= false;
@@ -115,8 +114,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testEsOperadorSinMenos() {
         System.out.println("esOperadorSinMenos");
-        char c1 = '/';
-        char c2 = '-';
+        char c1 = '/';//Prueba con un operador cualquiera
+        char c2 = '-';//Prueba con un menos
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -133,8 +132,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoDobleOperador() {
         System.out.println("noDobleOperador");
-        String formula1 = "4+8/6*24";
-        String formula2 = "166/19*/7";
+        String formula1 = "4+8/6*24";//Prueba con operadores separados
+        String formula2 = "166/19*/7";//Prueba con operadores juntos
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -151,8 +150,8 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoDobleDecimal() {
         System.out.println("noDobleDecimal");
-        String formula1 = "47.57+23.86";
-        String formula2 = "96.46/3.3.3";
+        String formula1 = "47.57+23.86";//Prueba con decimales bien
+        String formula2 = "96.46/3.3.3";//Prueba con doble decimal
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = true;
         boolean expResult2 = false;
@@ -168,7 +167,7 @@ public class EvaluacionSintaxisTest {
     @Test
     public void testNoOperadorAntesDeParentesis() {
         System.out.println("noOperadorAntesDeParentesis");
-        String formula = "";
+        String formula = "(4+(5*3(4/2)^2))";
         EvaluacionSintaxis instance = new EvaluacionSintaxis();
         boolean expResult1 = false;
         boolean expResult2 = false; 
