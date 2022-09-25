@@ -34,14 +34,6 @@ public class Calculadora {
         String texto5="9-6-(9*8+9/8^2)";
         String texto6="7/-8";
         String texto="(7)(5)(4)(4)(5)(85)";
-        //if(ever.expresionValida(texto)){
-            System.out.println(ever.expresionValida(texto));
-            System.out.println(pos.cadena(texto));
-            System.out.println(ev.evaluaPost(pos.cadena(texto)));
-            System.out.println(ev.evaluaPost("(2)(8)+(5)"));
-        //}
-        //else 
-          //  System.out.println("Imbécil");
         
     }
     
