@@ -75,7 +75,7 @@ public class EvaluacionPostfija <T>{
             }  
             i++;
         }
-        return pila.peek();
+        return Math.round(pila.peek()*10000)/10000d;
     }
     
     /**

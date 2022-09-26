@@ -30,7 +30,7 @@ public class EvaluacionSintaxis {
         
         while(i<formula.length() && res){
             c= formula.charAt(i);
-            if(!esNumero(c)&&!esOperador(c)&& c!='(' && c!=')' && c!='.'){
+            if(!esNumero(c)&&!esOperador(c)&& c!='(' && c!=')' && c!='.' || esOperadorSinMenos(formula.charAt(0))){
                 res=false;
             }
             i++;

@@ -54,7 +54,9 @@ public class Posfijo {
         
         int i = 0;
         Character c;
-        
+        if(!Character.isDigit(expresion.charAt(0)))
+                expresion="0"+expresion;
+        expresion=expresion.replace("(-", "(0-");
         while(i < expresion.length()){
             c = expresion.charAt(i);
             if((i == 0 && expresion.charAt(i) == '-') || Character.isDigit(c) || c == '.' || (c == '-' && !Character.isDigit(expresion.charAt(i-1)))){
@@ -87,7 +89,7 @@ public class Posfijo {
         }while(!pila.isEmpty()){
             posfija += pila.pop();
         }
-        return posfija;       
+        return posfija.replace("(-", "-(");       
     }
        
 }
