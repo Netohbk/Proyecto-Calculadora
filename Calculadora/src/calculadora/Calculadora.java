@@ -27,13 +27,16 @@ public class Calculadora {
         EvaluacionSintaxis ever = new EvaluacionSintaxis();
         //System.out.println(pos.cadena("((2.8+5)*3)/2*5/(5^25.5-32/6)"));
         //System.out.println(pos.cadena("((34/34)+4^6-(23-3+23)/23)"));
-        String texto1="((56/45)+45+-43)";
+        /*String texto1="((56/45)+45+-43)";
         String texto2="((6*34.45^4)+(89/7*5)/85^2)/895452"; // caso límite
         String texto3="((6^4)-(89/7*5)";
         String texto4="((6*3^4)-(89/7*5)/85^2)/895452";
         String texto5="9-6-(9*8+9/8^2)";
         String texto6="7/-8";
-        String texto="(7)(5)(4)(4)(5)(85)";
+        String texto="(7)(5)(4)(4)(5)(85)";*/
+        String tex="(((-8))+((-7))*((6)))";
+        String tex2="(-7)(-8)";
+        System.out.println(ev.evaluaPost(pos.cadena(tex2)));
         
     }
     

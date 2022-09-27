@@ -57,6 +57,7 @@ public class Posfijo {
         if(!Character.isDigit(expresion.charAt(0)))
                 expresion="0"+expresion;
         expresion=expresion.replace("(-", "(0-");
+        expresion=expresion.replace(")-", ")+0-");
         while(i < expresion.length()){
             c = expresion.charAt(i);
             if((i == 0 && expresion.charAt(i) == '-') || Character.isDigit(c) || c == '.' || (c == '-' && !Character.isDigit(expresion.charAt(i-1)))){
@@ -80,7 +81,8 @@ public class Posfijo {
                 }else if(pila.peek() == '(' || pesoOp(c) > pesoOp(pila.peek())){
                     pila.push(c);
                 }else if(pesoOp(c) <= pesoOp(pila.peek())){
-                    posfija+= pila.pop();
+                    while(!pila.isEmpty() && pila.peek()!= '(' && pesoOp(pila.peek()) >= pesoOp(c))
+                        posfija+= pila.pop();
                     pila.push(c);
                 }
             }else{
@@ -89,7 +91,7 @@ public class Posfijo {
         }while(!pila.isEmpty()){
             posfija += pila.pop();
         }
-        return posfija.replace("(-", "-(");       
+        return posfija;       
     }
        
 }
