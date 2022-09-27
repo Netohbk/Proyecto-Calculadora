@@ -346,7 +346,7 @@ public class interfaceCalculadora extends javax.swing.JFrame {
                 resultado=ev.evaluaPost(expresion);
                 this.jTextPane2.setText(Double.toString(resultado));
             }catch(Exception e){
-                this.jTextPane2.setText("Error");
+                this.jTextPane2.setText("Error: resultado indefinido");
             }
             
         }  
